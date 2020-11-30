@@ -16,12 +16,7 @@ Use [Vis.js](https://github.com/mdaines/viz.js) to render [GraphViz](http://www.
         &#96;&#96;&#96;
     </div>
 
-    ```viz
-    digraph {
-        A -> {B; C; D}
-    }
-    ```
-    You can choose different engines by specifying `engine=dot`. Engine circo, dot, neato, osage, or twopi are supported. Default engine is dot.
+    You can choose different engines by specifying `engine=xxx`. Engine `circo`, `dot`, `neato`, `osage`, or `twopi` are supported. Default engine is `dot`.
     <div style="border:1px dotted black; background-color: #F2F3F4; padding: 5px;">
         &#96;&#96;&#96; viz engine=neato<br>
         digraph { <br>
@@ -29,9 +24,3 @@ Use [Vis.js](https://github.com/mdaines/viz.js) to render [GraphViz](http://www.
         } <br>
         &#96;&#96;&#96;
     </div>
-
-    ```viz engine=neato
-    digraph {
-        A -> {B; C; D}
-    }
-    ```
