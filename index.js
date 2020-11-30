@@ -1,7 +1,7 @@
 const Viz = require('viz.js');
 const { Module, render } = require('viz.js/full.render.js');
 
-const reg = /(\s*)(```) *(viz|dot) *\n?([\s\S]+?)\s*(\2)(\n+|$)/g;
+const reg = /(\s*)(```) *(viz|dot) *(engine=\w*|) *\n?([\s\S]+?)\s*(\2)(\n+|$)/g;
 
 function ignore(data) {
   let source = data.source;
@@ -10,9 +10,18 @@ function ignore(data) {
 }
 
 hexo.extend.tag.register('viz', (args, content) => {
-  // console.info("get viz tag " + content);
+  // console.info("get viz arg=" + args);
+  // console.info("get viz content=" + content);
+  var userEngine = "dot";
+  if (args.length > 0) {
+    var params=args[0].split("=");
+    if (params.length == 2) {
+      userEngine = params[1];
+    }
+  }
+
   let viz = new Viz({ Module, render });
-  return viz.renderString(content);
+  return viz.renderString(content, {engine:userEngine});
 },{
   async: true,
   ends: true
@@ -22,8 +31,8 @@ hexo.extend.tag.register('viz', (args, content) => {
 hexo.extend.filter.register('before_post_render', (data) => {
   if (!ignore(data)) {
       data.content = data.content
-          .replace(reg, (raw, start, startQuote, lang, content, endQuote, end) => {
-              return start + '{% viz %}' + content + '{% endviz %}' + end;
+          .replace(reg, (raw, start, startQuote, lang, engine, content, endQuote, end) => {
+              return start + '{% viz ' + engine + '%}' + content + '{% endviz %}' + end;
           });
   }
 }, 9);
