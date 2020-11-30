@@ -9,7 +9,7 @@ function ignore(data) {
   return ['.js', '.css', '.html', '.htm'].indexOf(ext) > -1;
 }
 
-hexo.extend.tag.register('viz', (args, content) => {
+function renderVizTag(args, content) {
   // console.info("get viz arg=" + args);
   // console.info("get viz content=" + content);
   var userEngine = "dot";
@@ -22,6 +22,18 @@ hexo.extend.tag.register('viz', (args, content) => {
 
   let viz = new Viz({ Module, render });
   return viz.renderString(content, {engine:userEngine});
+}
+
+hexo.extend.tag.register('viz', (args, content) => {
+  return renderVizTag(args, content);
+},{
+  async: true,
+  ends: true
+}
+);
+
+hexo.extend.tag.register('dot', (args, content) => {
+  return renderVizTag(args, content);
 },{
   async: true,
   ends: true
