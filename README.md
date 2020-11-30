@@ -5,7 +5,7 @@ Use [Vis.js](https://github.com/mdaines/viz.js) to render [GraphViz](http://www.
 # Usage
 1. Install
     ```bash
-    npm install git@github.com:rjyblog/hexo-tag-viz.git
+    npm install https://github.com/rjyblog/hexo-tag-viz.git
     ```
 2. Code block with `viz` or `dot` notation will be rendered.
     <div style="border:1px dotted black; background-color: #F2F3F4; padding: 5px;">
