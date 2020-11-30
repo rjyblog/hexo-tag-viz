@@ -1,0 +1,28 @@
+{
+  "name": "hexo-tag-graphviz",
+  "version": "0.0.1",
+  "description": "Generate graphviz diagrams for Hexo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjyblog/hexo-tag-graphviz.git"
+  },
+  "keywords": [
+    "hexo",
+    "filter",
+    "graphviz",
+    "viz",
+    "markdown"
+  ],
+  "author": {
+    "name": "Jason Ren",
+    "email": "rjyqdu@126.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "viz.js": "^2.1.2"
+  }
+}
